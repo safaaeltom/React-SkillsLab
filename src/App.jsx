@@ -1,7 +1,11 @@
+import Counter from'./Counter';
+
 function App() {
+  
   return (
     <div>
       <h1>React Skills</h1>
+      < Counter />
     </div>
   )
 }
