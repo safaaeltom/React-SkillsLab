@@ -9,7 +9,7 @@ const TodoList = () => {
 
             <input 
             value={input}
-            onChange={(event)=setInput(event.target.value)} 
+            onChange={(event)=>setInput(event.target.value)} 
             type="text" 
             name="text" 
             placeholder= "Enter a task"
