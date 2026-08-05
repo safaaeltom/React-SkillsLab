@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const TodoList = () => {
     const [input, setInput] = useState("");
-    
+    const [todo, setTodo] = useState([]);
     return ( 
         <div>
             <h2>My Todo List</h2>
@@ -15,7 +15,12 @@ const TodoList = () => {
             placeholder= "Enter a task"
             />
 
-            <button>Add</button>
+            <button onClick={() => {
+                setTodo([...todo, input])
+                setInput("")
+                }}>
+                  Add
+                </button>
         </div>
      );
 }
