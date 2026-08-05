@@ -3,6 +3,7 @@ import { useState } from 'react';
 const TodoList = () => {
     const [input, setInput] = useState("");
     const [todo, setTodo] = useState([]);
+
     return ( 
         <div>
             <h2>My Todo List</h2>
@@ -21,6 +22,15 @@ const TodoList = () => {
                 }}>
                   Add
                 </button>
+        <div>
+           {todo.map((task) => {
+            console.log(todo);
+                return (
+                    <li key={task}>{task}</li>
+                );
+              })
+            }
+        </div>
         </div>
      );
 }
