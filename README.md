@@ -1,16 +1,27 @@
-# React + Vite
+# React Skills Lab
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A hands-on repository for learning modern React through carefully chosen mini projects.
 
-Currently, two official plugins are available:
+## Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This repository documents my React learning journey. Each mini project introduces one or two React concepts at a time, allowing me to understand them deeply before moving on.
 
-## React Compiler
+The focus is on:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Building React projects step by step
+* Understanding React concepts before memorizing syntax
+* Learning how JavaScript concepts are applied differently in React
+* Practicing reusable React patterns
+* Tracking progress through meaningful Git commits
 
-## Expanding the ESLint configuration
+## Mini Projects
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Counter** – Learned React fundamentals including components, JSX, `useState`, event handling, props, and conditional rendering.
+
+* **Todo List** – Learned controlled inputs, multiple state variables, updating arrays with `map()` and `filter()`, input validation, and event handler functions.
+
+## Progress
+
+* ✅ Counter Project
+* 🚧 Todo List Project
+* ⏳ More mini projects coming...
