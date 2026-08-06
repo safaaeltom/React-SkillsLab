@@ -4,13 +4,13 @@ const TodoList = () => {
     const [input, setInput] = useState("");
     const [todo, setTodo] = useState([]);
 
-    const handleAdd = () => {
-        const trimmedInput= input.trim();
+    // const handleAdd = () => {
+    //     const trimmedInput= input.trim();
 
-        if(trimmedInput.length > 0) {
-                setTodo([...todo, trimmedInput])
-                setInput("")
-                }};
+    //     if(trimmedInput.length > 0) {
+    //             setTodo([...todo, trimmedInput])
+    //             setInput("")
+    //             }};
 
     const handleDelete = (taskToDelete) => {
         const updatedTodo = todo.filter((task) => task !== taskToDelete);
@@ -30,7 +30,10 @@ const TodoList = () => {
             placeholder= "Enter a task"
             />
 
-            <button onClick={handleAdd}>
+            <button onClick= {()=>{
+                 setTodo([...todo, input])
+                 setInput("")
+                 }}>
                   Add
                 </button>
         <ul>
