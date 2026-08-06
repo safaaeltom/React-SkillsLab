@@ -4,6 +4,13 @@ const TodoList = () => {
     const [input, setInput] = useState("");
     const [todo, setTodo] = useState([]);
 
+    const handleAdd = () =>{
+        const trimmedInput= input.trim();
+
+        if(trimmedInput.length > 0) {
+                setTodo([...todo, trimmedInput])
+                setInput("")
+                }};
     return ( 
         <div>
             <h2>My Todo List</h2>
@@ -16,21 +23,17 @@ const TodoList = () => {
             placeholder= "Enter a task"
             />
 
-            <button onClick={() => {
-                setTodo([...todo, input])
-                setInput("")
-                }}>
+            <button onClick={handleAdd}>
                   Add
                 </button>
-        <div>
+        <ul>
            {todo.map((task) => {
-            console.log(todo);
                 return (
                     <li key={task}>{task}</li>
                 );
               })
             }
-        </div>
+        </ul>
         </div>
      );
 }
