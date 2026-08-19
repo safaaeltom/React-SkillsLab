@@ -2,8 +2,10 @@ import {useState} from 'react';
 
 const MedicineList = () => {
     const [medicines, setMedicines] = useState([
-    { id: 1, name: "Paracetamol", quantity: 24 },
-    { id: 2, name: "Ibuprofen", quantity: 5 }
+    { id: 1, name: "Paracetamol ", quantity: 24 },
+    { id: 2, name: "Ibuprofen ", quantity: 5 },
+    { id: 3, name: "Azithromycin ", quantity: 18 }
+
     ]);
 
     const increaseMedicine = (id) => {
@@ -30,6 +32,14 @@ const MedicineList = () => {
         );
     };
 
+    const deleteMedicine = (id) =>{
+        setMedicines(
+            medicines.filter((medicine)=>
+               medicine.id!==id
+            )
+        );
+    };
+
     return ( 
         <div className="list">
             <h2>Medicine List</h2>
@@ -44,6 +54,10 @@ const MedicineList = () => {
                         <button onClick={()=>decreaseMedicine(medicine.id)}>
                             -
                         </button>
+                        <button onClick={()=>deleteMedicine(medicine.id)}>
+                            Delete
+                        </button>
+                        
                     </li>
                 ))}
             </ul>
