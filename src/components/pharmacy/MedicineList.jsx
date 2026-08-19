@@ -18,6 +18,18 @@ const MedicineList = () => {
         );
     };
 
+    const decreaseMedicine = (id) => {
+        setMedicines(
+            medicines.map((medicine)=>{
+                if(medicine.id===id && medicine.quantity>0){
+                    return {...medicine, quantity: medicine.quantity - 1};
+                }
+              
+               return medicine;
+            })
+        );
+    };
+
     return ( 
         <div className="list">
             <h2>Medicine List</h2>
@@ -29,7 +41,9 @@ const MedicineList = () => {
                         <button onClick={()=>increaseMedicine(medicine.id)}>
                             +
                         </button>
-                        <button>-</button>
+                        <button onClick={()=>decreaseMedicine(medicine.id)}>
+                            -
+                        </button>
                     </li>
                 ))}
             </ul>
