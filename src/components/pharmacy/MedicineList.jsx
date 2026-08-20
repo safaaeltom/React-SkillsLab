@@ -40,6 +40,17 @@ const MedicineList = () => {
         );
     };
 
+    const editMedicine = (id, newName) =>{
+        setMedicines(
+            medicines.map((medicine)=>{
+                if(medicine.id===id){
+                    return {...medicine, name: newName};
+                }
+                return medicine;
+            })
+        );
+    };
+
     return ( 
         <div className="list">
             <h2>Medicine List</h2>
@@ -56,6 +67,9 @@ const MedicineList = () => {
                         </button>
                         <button onClick={()=>deleteMedicine(medicine.id)}>
                             Delete
+                        </button>
+                        <button onClick={()=>editMedicine(medicine.id)}>
+                            Edit
                         </button>
                         
                     </li>
