@@ -90,9 +90,22 @@ const MedicineList = () => {
                     </li>
                 ))}
             </ul>
+            <div className="add-medicine">
+                <label htmlFor="medicine-name">Medicine Name</label>
+                <input value="" type="text"
+                placeholder="Enter Medicine"
+                >
+                </input><br/>
+                <label htmlFor="medicine-quantity">Medicine Quantity</label>
+                <input value="" type="number"
+                placeholder="Enter Quantity"
+                >
+                </input><br/>
+                <button>Add</button>
+            </div>
             
         </div>
-     );
+    );
 }
  
 export default MedicineList;
