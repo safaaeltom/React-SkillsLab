@@ -103,10 +103,21 @@ const MedicineList = () => {
                 <label htmlFor="medicine-quantity">Medicine Quantity</label>
                 <input value={medicineQuantity} type="number"
                 placeholder="Enter Quantity"
-                onChange={(e)=>setMedicineQuantity(e.target.value)}
+                onChange={(e)=>setMedicineQuantity(Number(e.target.value))}
                 >
                 </input><br/>
-                <button onClick={()=>{}}>Add</button>
+                <button onClick={()=>{
+                 setMedicines([...medicines,
+                    {id: medicines.length+1,
+                    name: medicineName,
+                    quantity: medicineQuantity}
+                 ])
+                setMedicineName("");
+                setMedicineQuantity(""); 
+                }}>
+                Add
+            </button>
+
             </div>
             
         </div>
