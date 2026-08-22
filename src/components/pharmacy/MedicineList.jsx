@@ -101,7 +101,7 @@ const MedicineList = () => {
                 >
                 </input><br/>
                 <label htmlFor="medicine-quantity">Medicine Quantity</label>
-                <input value={medicineQuantity} type="number"
+                <input value={medicineQuantity} type="number" min={0}
                 placeholder="Enter Quantity"
                 onChange={(e)=>setMedicineQuantity(Number(e.target.value))}
                 >
@@ -113,7 +113,7 @@ const MedicineList = () => {
                     name: medicineName,
                     quantity: medicineQuantity}
                     ]);
-                    
+
                     setMedicineName("");
                     setMedicineQuantity(""); 
                 }}}>
