@@ -53,6 +53,9 @@ const MedicineList = () => {
 
     const [editingMedicineId, setEditingMedicineId] = useState(null);
     const [input, setInput] = useState("");
+    const [medicineName, setMedicineName] = useState("");
+    const [medicineQuantity, setMedicineQuantity] = useState("");
+
 
     return ( 
         <div className="list">
@@ -92,16 +95,18 @@ const MedicineList = () => {
             </ul>
             <div className="add-medicine">
                 <label htmlFor="medicine-name">Medicine Name</label>
-                <input value="" type="text"
+                <input value={medicineName} type="text"
                 placeholder="Enter Medicine"
+                onChange={(e)=>setMedicineName(e.target.value)}
                 >
                 </input><br/>
                 <label htmlFor="medicine-quantity">Medicine Quantity</label>
-                <input value="" type="number"
+                <input value={medicineQuantity} type="number"
                 placeholder="Enter Quantity"
+                onChange={(e)=>setMedicineQuantity(e.target.value)}
                 >
                 </input><br/>
-                <button>Add</button>
+                <button onClick={()=>{}}>Add</button>
             </div>
             
         </div>
