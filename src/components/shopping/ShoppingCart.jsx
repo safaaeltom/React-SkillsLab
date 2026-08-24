@@ -2,10 +2,16 @@ import {useState} from 'react';
 
 const ShoppingCart = () => {
     const [products, setProducts] = useState([
-        {id:1, name: "mobile ", type: "redmi"},
-        {id:2, name: "headset ", type: "bluetooth"},
-        {id:3, name: "laptop ", type: "toshipa"}
+        {id:1, name: "mobile ", type: "redmi", quantity: 2},
+        {id:2, name: "headset ", type: "bluetooth", quantity: 7},
+        {id:3, name: "laptop ", type: "toshipa", quantity: 20}
     ])
+
+    const [productName, setProductName] = useState("");
+    const [productType, setProductType] = useState("");
+    const [productQuantity, setProductQuantity] = useState("");
+
+
     return ( 
         <div className="shopping-cart">
             <h2>Cart Items</h2>
@@ -17,6 +23,24 @@ const ShoppingCart = () => {
                     </li>
                 ))}
             </ul>
+            <div>
+                <label htmlFor="product-name">Product</label>
+                <input type="text" value={productName}
+                placeholder="Enter name"
+                onChange={(e)=>setProductName(e.target.value)}
+                /><br/>
+                <label htmlFor="product-type">Type</label>
+                <input type="text" value={productType}
+                placeholder="Enter type"
+                onChange={(e)=>setProductType(e.target.value)}
+                /><br/>
+                <label htmlFor="product-quantity">Quantity</label>
+                <input type="number" min={0} value={productQuantity}
+                placeholder="Enter quantity"
+                onChange={(e)=>setProductQuantity(Number(e.target.value))}
+                /><br/>
+                <button>Add Products</button>
+            </div>
         </div>
      );
 }
