@@ -21,6 +21,10 @@ const ShoppingCart = () => {
             type: productType,
             quantity: productQuantity
         }])
+
+        setProductName("");
+        setProductType("");
+        setProductQuantity("");
     };
 
     return ( 
