@@ -1,6 +1,7 @@
-import Counter from './components/counter/Counter';
-import TodoList from './components/todoList/TodoList';
-import MedicineList from './components/pharmacy/MedicineList';
+// import Counter from './components/counter/Counter';
+// import TodoList from './components/todoList/TodoList';
+// import MedicineList from './components/pharmacy/MedicineList';
+import ShoppingCart from './components/shopping/ShoppingCart'
 
 function App() {
   
@@ -9,7 +10,8 @@ function App() {
       <h1>React Skills</h1>
       {/* < Counter /> */}
       {/* < TodoList /> */}
-      < MedicineList />
+      {/* < MedicineList /> */}
+      <ShoppingCart />
     </div>
   )
 }
