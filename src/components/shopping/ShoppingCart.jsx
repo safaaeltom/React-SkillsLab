@@ -2,9 +2,9 @@ import {useState} from 'react';
 
 const ShoppingCart = () => {
     const [products, setProducts] = useState([
-        {id:1, name: "mobile ", type: "redmi ", quantity: 2},
-        {id:2, name: "headset ", type: "bluetooth ", quantity: 7},
-        {id:3, name: "laptop ", type: "toshipa ", quantity: 20}
+        {id:1, name: "mobile", type: "redmi", quantity: 2},
+        {id:2, name: "headset", type: "bluetooth", quantity: 7},
+        {id:3, name: "laptop", type: "toshipa", quantity: 20}
     ])
 
     const [productName, setProductName] = useState("");
@@ -17,8 +17,8 @@ const ShoppingCart = () => {
         }
         setProducts([...products, {
             id: products.length + 1,
-            name: productName,
-            type: productType,
+            name: productName.trim(),
+            type: productType.trim(),
             quantity: productQuantity
         }])
 
@@ -33,8 +33,8 @@ const ShoppingCart = () => {
             <ul>
                 {products.map((product)=>(
                     <li key={product.id}>
-                        <span className="name">{product.name}</span>
-                        <span className="type">{product.type}</span>
+                        <span className="name">{product.name}</span>{" "}
+                        <span className="type">{product.type}</span>{" "}
                         <span className="quantity">{product.quantity}</span>
 
                     </li>
