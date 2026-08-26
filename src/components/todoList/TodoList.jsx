@@ -21,7 +21,10 @@ const TodoList = () => {
     return ( 
         <div>
             <h2>My Todo List</h2>
-
+            <form onSubmit={(e)=>{
+                e.preventDefault();
+                handleAdd();
+            }}>
             <input 
             value={input}
             onChange={(event)=>setInput(event.target.value)} 
@@ -30,19 +33,19 @@ const TodoList = () => {
             placeholder= "Enter a task"
             />
 
-            <button onClick= {handleAdd}>
+            <button type="submit">
                   Add
-                </button>
+            </button>
+            </form>
         <ul>
-           {todo.map((task) => {
-                return (
+            {todo.map((task) => (
                     <li key={task}>
                         {task}
                         <button onClick={()=>handleDelete(task)}
                          >Delete</button>
                     </li>
-                );
-              })
+                
+                ))
             }
         </ul>
         </div>

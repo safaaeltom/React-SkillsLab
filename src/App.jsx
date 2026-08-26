@@ -1,5 +1,5 @@
 // import Counter from './components/counter/Counter';
-// import TodoList from './components/todoList/TodoList';
+import TodoList from './components/todoList/TodoList';
 // import MedicineList from './components/pharmacy/MedicineList';
 import ShoppingCart from './components/shopping/ShoppingCart'
 
@@ -9,7 +9,7 @@ function App() {
     <div>
       <h1>React Skills</h1>
       {/* < Counter /> */}
-      {/* < TodoList /> */}
+      < TodoList />
       {/* < MedicineList /> */}
       <ShoppingCart />
     </div>
