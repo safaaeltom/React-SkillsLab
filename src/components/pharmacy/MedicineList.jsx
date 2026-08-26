@@ -112,7 +112,7 @@ const MedicineList = () => {
                     }
                     setMedicines([...medicines,
                     {id: medicines.length+1,
-                    name: medicineName,
+                    name: medicineName.trim(),
                     quantity: medicineQuantity}
                     ]);
 
