@@ -107,8 +107,10 @@ const MedicineList = () => {
                 >
                 </input><br/>
                 <button onClick={()=>{
-                    if(medicineName!=="" && medicineQuantity>0){
-                        setMedicines([...medicines,
+                    if(medicineName.trim()==="" || medicineQuantity>0){
+                        return;
+                    }
+                    setMedicines([...medicines,
                     {id: medicines.length+1,
                     name: medicineName,
                     quantity: medicineQuantity}
@@ -116,7 +118,7 @@ const MedicineList = () => {
 
                     setMedicineName("");
                     setMedicineQuantity(""); 
-                }}}>
+                }}>
                 Add
             </button>
 
