@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const TodoList = () => {
     const [input, setInput] = useState("");
@@ -17,6 +17,19 @@ const TodoList = () => {
         setTodo(updatedTodo);
 
     }
+
+    useEffect(()=>{
+            const savedTodos = localStorage.getItem("todos"); //Retrieve
+
+            if (savedTodos!==null){
+            const parsedTodos= JSON.parse(savedTodos); //Convert to array
+            setTodo(parsedTodos)                // Give it to react
+            }
+    }, []);
+    
+       
+
+    
 
     return ( 
         <div>
