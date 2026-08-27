@@ -5,12 +5,12 @@ const TodoList = () => {
     const [todo, setTodo] = useState([]);
 
     const handleAdd = () => {
-        const trimmedInput= input.trim();
-
-        if(trimmedInput.length > 0) {
-                setTodo([...todo, trimmedInput])
-                setInput("")
-                }};
+     if(input.trim()==="") {
+            return;
+        }
+            setTodo([...todo, input.trim()])
+            setInput("")
+            };
 
     const handleDelete = (taskToDelete) => {
         const updatedTodo = todo.filter((task) => task !== taskToDelete);
