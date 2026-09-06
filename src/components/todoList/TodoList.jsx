@@ -6,12 +6,13 @@ const TodoList = () => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     const handleAdd = () => {
-     if(input.trim()==="") {
+
+        if(input.trim()==="" || todo.includes(input.trim())) {
             return;
         }
-            setTodo([...todo, input.trim()])
-            setInput("")
-            };
+        setTodo([...todo, input.trim()])
+        setInput("")
+        };
 
     const handleDelete = (taskToDelete) => {
         const updatedTodo = todo.filter((task) => task !== taskToDelete);
@@ -31,6 +32,7 @@ const TodoList = () => {
     }, []);
     
     useEffect(()=>{
+        
         if(isLoaded){
         const todoString = JSON.stringify(todo) //Convert to string
         localStorage.setItem("todos", todoString) //Store the string inside todos
