@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 const TodoList = () => {
     const [input, setInput] = useState("");
     const [todo, setTodo] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const handleAdd = () => {
      if(input.trim()==="") {
@@ -19,15 +20,23 @@ const TodoList = () => {
     }
 
     useEffect(()=>{
-            const savedTodos = localStorage.getItem("todos"); //Retrieve
+        const savedTodos = localStorage.getItem("todos"); //Retrieve
 
-            if (savedTodos!==null){
-            const parsedTodos= JSON.parse(savedTodos); //Convert to array
-            setTodo(parsedTodos)                // Give it to react
-            }
+        if (savedTodos!==null){
+        const parsedTodos= JSON.parse(savedTodos); //Convert to array
+        setTodo(parsedTodos);  // Give it to react
+        }
+
+        setIsLoaded(true)
     }, []);
     
-       
+    useEffect(()=>{
+        if(isLoaded){
+        const todoString = JSON.stringify(todo) //Convert to string
+        localStorage.setItem("todos", todoString) //Store the string inside todos
+        }
+    }, [todo, isLoaded])
+   
 
     
 
