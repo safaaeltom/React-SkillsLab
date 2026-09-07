@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 
 const MedicineList = () => {
     const [medicines, setMedicines] = useState([
@@ -55,18 +55,25 @@ const MedicineList = () => {
     const [input, setInput] = useState("");
     const [medicineName, setMedicineName] = useState("");
     const [medicineQuantity, setMedicineQuantity] = useState("");
+    const [hasLoaded, setHasLoaded] = useState(false);
 
     useEffect(()=>{
         const savedMedicines = localStorage.getItem("AvailableMedicines")
-        if (savedMedicines===null)
-            return;
+
+        if (savedMedicines!==null){
         const parsedMedicines = JSON.parse(savedMedicines)
-        setMedicines(parsedMedicines)}, []);
+        setMedicines(parsedMedicines)
+        }
+        setHasLoaded(true);
+    }, []);
 
     useEffect(()=>{
+        if(!hasLoaded){
+            return;
+        }
+
         const medicinesString = JSON.stringify(medicines)
         localStorage.setItem("AvailableMedicines", medicinesString)
-        
     }, [medicines])
 
 
@@ -120,7 +127,7 @@ const MedicineList = () => {
                 >
                 </input><br/>
                 <button onClick={()=>{
-                    if(medicineName.trim()==="" || medicineQuantity>0){
+                    if(medicineName.trim()==="" || medicineQuantity<0){
                         return;
                     }
                     setMedicines([...medicines,
