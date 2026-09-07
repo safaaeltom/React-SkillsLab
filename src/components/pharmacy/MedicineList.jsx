@@ -61,7 +61,13 @@ const MedicineList = () => {
         if (savedMedicines===null)
             return;
         const parsedMedicines = JSON.parse(savedMedicines)
-        setMedicines(parsedMedicines)}, [])
+        setMedicines(parsedMedicines)}, []);
+
+    useEffect(()=>{
+        const medicinesString = JSON.stringify(medicines)
+        localStorage.setItem("AvailableMedicines", medicinesString)
+        
+    }, [medicines])
 
 
     return ( 
