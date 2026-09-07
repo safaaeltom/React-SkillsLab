@@ -74,7 +74,7 @@ const MedicineList = () => {
 
         const medicinesString = JSON.stringify(medicines)
         localStorage.setItem("AvailableMedicines", medicinesString)
-    }, [medicines])
+    }, [medicines, hasLoaded])
 
 
     return ( 
