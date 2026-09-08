@@ -9,9 +9,11 @@ const MedicineItem = ({
     input,
     setInput
 }) => {
+    const [isEditing, setIsEditing] = useState(false);
+
     return ( 
         <li>
-            {medicine.id === editingMedicineId ? 
+            {isEditing ? 
             (<input 
                 value={input} 
                 type= "text" 
@@ -29,14 +31,14 @@ const MedicineItem = ({
                 Delete 
             </button> 
             <button onClick={()=>{ 
-                if(medicine.id===editingMedicineId){ 
-                    editMedicine(editingMedicineId, input); 
-                    setEditingMedicineId(null) 
+                if(isEditing){ 
+                    editMedicine(medicine.id, input); 
+                    setIsEditing(false) 
                 }else{ 
-                    setEditingMedicineId(medicine.id); 
+                    setIsEditing(true); 
                     setInput(medicine.name)} 
                 }}> 
-                {medicine.id===editingMedicineId ? "Save" : "Edit"} 
+                {isEditing ? "Save" : "Edit"} 
             </button> 
         </li>
     );
