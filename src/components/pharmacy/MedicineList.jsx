@@ -1,4 +1,5 @@
-import {useState, useEffect, useRef} from 'react';
+import {useState, useEffect} from 'react';
+import MedicineItem from './MedicineItem';
 
 const MedicineList = () => {
     const [medicines, setMedicines] = useState([
@@ -58,7 +59,7 @@ const MedicineList = () => {
     const [hasLoaded, setHasLoaded] = useState(false);
 
     useEffect(()=>{
-        const savedMedicines = localStorage.getItem("AvailableMedicines")
+        const savedMedicines = localStorage.getItem("AvailableMedicines");
 
         if (savedMedicines!==null){
         const parsedMedicines = JSON.parse(savedMedicines)
@@ -82,35 +83,18 @@ const MedicineList = () => {
             <h2>Medicine List</h2>
             <ul >
                 {medicines.map((medicine)=>(
-                <li key={medicine.id}>
-                    {medicine.id === editingMedicineId ? 
-                    (<input 
-                    value={input} 
-                    type= "text" 
-                    onChange={(e)=>setInput(e.target.value)}
-                    />):(
-                    <span className="name">{medicine.name}</span>)}
-                    <span className="quantity">{medicine.quantity}</span>
-                    <button onClick={()=>increaseMedicine(medicine.id)}>
-                        +
-                    </button>
-                    <button onClick={()=>decreaseMedicine(medicine.id)}>
-                         -
-                    </button>
-                    <button onClick={()=>deleteMedicine(medicine.id)}>
-                        Delete
-                    </button>
-                    <button onClick={()=>{
-                        if(medicine.id===editingMedicineId){
-                            editMedicine(editingMedicineId, input);
-                            setEditingMedicineId(null)
-                        }else{
-                            setEditingMedicineId(medicine.id);
-                            setInput(medicine.name)}
-                        }}>
-                        {medicine.id===editingMedicineId ? "Save" : "Edit"}    
-                        </button> 
-                    </li>
+                    <MedicineItem
+                    key={medicine.id}
+                    medicine={medicine}
+                    increaseMedicine={increaseMedicine}
+                    decreaseMedicine={decreaseMedicine}
+                    deleteMedicine={deleteMedicine}
+                    editMedicine={editMedicine}
+                    editingMedicineId={editingMedicineId}
+                    setEditingMedicineId={setEditingMedicineId}
+                    input={input}
+                    setInput={setInput}
+                    />
                 ))}
             </ul>
             <div className="add-medicine">
