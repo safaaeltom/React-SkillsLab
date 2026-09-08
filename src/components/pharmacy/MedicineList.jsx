@@ -105,7 +105,7 @@ const MedicineList = () => {
                 >
                 </input><br/>
                 <button onClick={()=>{
-                    if(medicineName.trim()==="" || medicineQuantity<0){
+                    if(medicineName.trim()==="" || medicineQuantity==="" || medicineQuantity<0){
                         return;
                     }
 
