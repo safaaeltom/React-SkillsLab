@@ -1,15 +1,14 @@
+import {useState} from 'react';
+
 const MedicineItem = ({
     medicine,
     increaseMedicine,
     decreaseMedicine,
     deleteMedicine,
     editMedicine,
-    editingMedicineId,
-    setEditingMedicineId,
-    input,
-    setInput
 }) => {
     const [isEditing, setIsEditing] = useState(false);
+    const [input, setInput] = useState(medicine.name);
 
     return ( 
         <li>
@@ -35,8 +34,7 @@ const MedicineItem = ({
                     editMedicine(medicine.id, input); 
                     setIsEditing(false) 
                 }else{ 
-                    setIsEditing(true); 
-                    setInput(medicine.name)} 
+                    setIsEditing(true)} 
                 }}> 
                 {isEditing ? "Save" : "Edit"} 
             </button> 

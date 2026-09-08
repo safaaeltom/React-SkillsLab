@@ -52,8 +52,6 @@ const MedicineList = () => {
         );
     };
 
-    const [editingMedicineId, setEditingMedicineId] = useState(null);
-    const [input, setInput] = useState("");
     const [medicineName, setMedicineName] = useState("");
     const [medicineQuantity, setMedicineQuantity] = useState("");
     const [hasLoaded, setHasLoaded] = useState(false);
@@ -90,10 +88,6 @@ const MedicineList = () => {
                     decreaseMedicine={decreaseMedicine}
                     deleteMedicine={deleteMedicine}
                     editMedicine={editMedicine}
-                    editingMedicineId={editingMedicineId}
-                    setEditingMedicineId={setEditingMedicineId}
-                    input={input}
-                    setInput={setInput}
                     />
                 ))}
             </ul>
