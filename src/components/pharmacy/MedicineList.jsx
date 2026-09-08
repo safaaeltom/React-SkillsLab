@@ -108,17 +108,28 @@ const MedicineList = () => {
                     if(medicineName.trim()==="" || medicineQuantity<0){
                         return;
                     }
+
+                    const highestId = medicines.reduce((highestId, medicine) => {
+                        if (medicine.id > highestId) {
+                            return medicine.id;
+                        }
+
+                        return highestId;
+                    }, 0);
+
+                    const newId = highestId + 1;
+
                     setMedicines([...medicines,
-                    {id: medicines.length+1,
+                    {id: newId,
                     name: medicineName.trim(),
                     quantity: medicineQuantity}
                     ]);
 
                     setMedicineName("");
                     setMedicineQuantity(""); 
-                }}>
-                Add
-            </button>
+                    }}>
+                    Add
+                </button>
 
             </div>
             

@@ -19,16 +19,20 @@ const MedicineItem = ({
                 onChange={(e)=>setInput(e.target.value)} 
                 />):( 
                 <span className="name">{medicine.name}</span>)} 
-                <span className="quantity">{medicine.quantity}</span> 
+                <span className="quantity">{medicine.quantity}</span>
+
             <button onClick={()=>increaseMedicine(medicine.id)}> 
                 + 
-            </button> 
+            </button>
+
             <button onClick={()=>decreaseMedicine(medicine.id)}> 
                 - 
-            </button> 
+            </button>
+
             <button onClick={()=>deleteMedicine(medicine.id)}> 
                 Delete 
-            </button> 
+            </button>
+            
             <button onClick={()=>{ 
                 if(isEditing){ 
                     editMedicine(medicine.id, input); 
