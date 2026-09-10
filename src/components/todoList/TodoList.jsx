@@ -4,6 +4,7 @@ const TodoList = () => {
     const [input, setInput] = useState("");
     const [todo, setTodo] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [editingTask, setEditingTask] = useState(null);
 
     const handleAdd = () => {
         const newTodo = input.trim();
@@ -23,9 +24,20 @@ const TodoList = () => {
 
     const handleDelete = (taskToDelete) => {
         const updatedTodo = todo.filter((task) => task !== taskToDelete);
-        setTodo(updatedTodo);
-
+        setTodo(updatedTodo)
     }
+
+    const handleEdit = (oldTask, newTask) => {
+      setTodo(
+        todo.map((task) => {
+           if (task === oldTask) {
+           return newTask;
+           }
+
+           return task;
+        })
+      );
+    }; 
 
     useEffect(()=>{
         const savedTodos = localStorage.getItem("todos"); //Retrieve
@@ -45,9 +57,6 @@ const TodoList = () => {
         localStorage.setItem("todos", todoString) //Store the string inside todos
         }
     }, [todo, isLoaded])
-   
-
-    
 
     return ( 
         <div>
@@ -71,9 +80,35 @@ const TodoList = () => {
         <ul>
             {todo.map((task) => (
                     <li key={task}>
-                        {task}
-                        <button onClick={()=>handleDelete(task)}
-                         >Delete</button>
+                        {task === editingTask ? (
+                            <>
+                                <input
+                                    value={input}
+                                    onChange={(e) => setInput(e.target.value)}
+                                />
+
+                                <button onClick={() => handleEdit(task, input)}>
+                                    Save
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                {task}
+
+                                <button onClick={() => handleDelete(task)}>
+                                    Delete
+                                </button>
+
+                                <button
+                                    onClick={() => {
+                                        setEditingTask(task);
+                                        setInput(task);
+                                    }}
+                                >
+                                    Edit
+                                </button>
+                            </>
+                        )}
                     </li>
                 
                 ))
