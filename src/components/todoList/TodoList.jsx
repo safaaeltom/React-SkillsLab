@@ -31,10 +31,12 @@ const TodoList = () => {
         const trimmedTask = newTask.trim();
 
         if (trimmedTask === "") {
+            setEditingTask(null)
             return;
         }
 
         if (todo.includes(trimmedTask) && trimmedTask!==oldTask){
+            setEditingTask(null)
             setEditInput("")
             return;
         }
