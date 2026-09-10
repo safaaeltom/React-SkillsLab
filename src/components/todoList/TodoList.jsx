@@ -5,6 +5,7 @@ const TodoList = () => {
     const [todo, setTodo] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [editingTask, setEditingTask] = useState(null);
+    const [editInput, setEditInput] = useState("")
 
     const handleAdd = () => {
         const newTodo = input.trim();
@@ -37,6 +38,9 @@ const TodoList = () => {
            return task;
         })
       );
+
+      setEditingTask(null);
+      setEditInput("");
     }; 
 
     useEffect(()=>{
@@ -83,11 +87,13 @@ const TodoList = () => {
                         {task === editingTask ? (
                             <>
                                 <input
-                                    value={input}
-                                    onChange={(e) => setInput(e.target.value)}
+                                    value={editInput}
+                                    onChange={(e) => setEditInput(e.target.value)}
                                 />
 
-                                <button onClick={() => handleEdit(task, input)}>
+                                <button onClick={() => handleEdit(task, editInput)
+                                    
+                                }>
                                     Save
                                 </button>
                             </>
@@ -102,7 +108,7 @@ const TodoList = () => {
                                 <button
                                     onClick={() => {
                                         setEditingTask(task);
-                                        setInput(task);
+                                        setEditInput(task);
                                     }}
                                 >
                                     Edit
