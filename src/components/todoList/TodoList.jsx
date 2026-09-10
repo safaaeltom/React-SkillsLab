@@ -28,15 +28,26 @@ const TodoList = () => {
     };
 
     const handleEdit = (oldTask, newTask) => {
-      setTodo(
-        todo.map((task) => {
-           if (task === oldTask) {
-           return newTask;
-           }
+        const trimmedTask = newTask.trim();
 
-           return task;
-        })
-      );
+        if (trimmedTask === "") {
+            return;
+        }
+
+        if (todo.includes(trimmedTask) && trimmedTask!==oldTask){
+            setEditInput("")
+            return;
+        }
+
+        setTodo(
+            todo.map((task) => {
+            if (task === oldTask) {
+            return trimmedTask;
+            }
+
+            return task;
+            })
+        );
 
       setEditingTask(null);
       setEditInput("");
