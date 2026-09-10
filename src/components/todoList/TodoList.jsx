@@ -24,9 +24,8 @@ const TodoList = () => {
         };
 
     const handleDelete = (taskToDelete) => {
-        const updatedTodo = todo.filter((task) => task !== taskToDelete);
-        setTodo(updatedTodo)
-    }
+        setTodo(todo.filter((task) => task !== taskToDelete));
+    };
 
     const handleEdit = (oldTask, newTask) => {
       setTodo(
