@@ -24,12 +24,22 @@ const ShoppingCart = () => {
         );
     };
 
+    const highestId = products.reduce((highestId, product)=>{
+        if(product.id > highestId){
+            return product.id;
+        }
+        
+        return highestId;
+    }, 0)
+
+    const newId = highestId + 1;
+
     const addProduct = (productName, productType, productQuantity) => {
         if(productName.trim()==="" || productType.trim()==="" || productQuantity<1){
         return;
         }
         setProducts([...products, {
-            id: products.length + 1,
+            id: newId,
             name: productName.trim(),
             type: productType.trim(),
             quantity: productQuantity
