@@ -91,21 +91,17 @@ const MedicineList = () => {
                     />
                 ))}
             </ul>
-            <div className="add-medicine">
-                <label htmlFor="medicine-name">Medicine Name</label>
-                <input value={medicineName} type="text"
-                placeholder="Enter Medicine"
-                onChange={(e)=>setMedicineName(e.target.value)}
-                >
-                </input><br/>
-                <label htmlFor="medicine-quantity">Medicine Quantity</label>
-                <input value={medicineQuantity} type="number" min={0}
-                placeholder="Enter Quantity"
-                onChange={(e)=>setMedicineQuantity(Number(e.target.value))}
-                >
-                </input><br/>
-                <button onClick={()=>{
-                    if(medicineName.trim()==="" || medicineQuantity==="" || medicineQuantity<0){
+            <form className="add-medicine"
+                onSubmit={(e)=>{
+                    e.preventDefault();
+
+                    if(
+                        medicineName.trim()==="" || 
+                        medicineQuantity==="" || 
+                        medicineQuantity<1
+                    ){
+                        setMedicineName("");
+                        setMedicineQuantity(""); 
                         return;
                     }
 
@@ -127,11 +123,31 @@ const MedicineList = () => {
 
                     setMedicineName("");
                     setMedicineQuantity(""); 
-                    }}>
+                    }}
+                    >
+
+                <label htmlFor="medicine-name">Medicine Name</label>
+                <input 
+                value={medicineName} type="text"
+                placeholder="Enter Medicine"
+                onChange={(e)=>setMedicineName(e.target.value)}
+                >
+                </input>
+                <br/>
+
+                <label htmlFor="medicine-quantity">Medicine Quantity</label>
+                <input 
+                value={medicineQuantity} type="number" min={0}
+                placeholder="Enter Quantity"
+                onChange={(e)=>setMedicineQuantity(Number(e.target.value))}
+                >
+                </input>
+                <br/>
+
+                <button type="submit">
                     Add
                 </button>
-
-            </div>
+            </form>
             
         </div>
     );
