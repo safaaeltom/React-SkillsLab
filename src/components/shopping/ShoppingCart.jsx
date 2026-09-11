@@ -10,6 +10,19 @@ const ShoppingCart = () => {
     const [productName, setProductName] = useState("");
     const [productType, setProductType] = useState("");
     const [productQuantity, setProductQuantity] = useState("");
+    const [editingProductId, setEditingProductId] = useState(null);
+    const [input, setInput] = useState("");
+
+    const editProduct =(id, newName)=>{
+        setProducts(
+            products.map((product)=>{
+                if(product.id===id){
+                    return {...product, name: newName}
+                }
+                return product;
+            })
+        );
+    };
 
     const addProduct = (productName, productType, productQuantity) => {
         if(productName.trim()==="" || productType.trim()==="" || productQuantity<1){
@@ -29,18 +42,37 @@ const ShoppingCart = () => {
 
     return ( 
         <div className="shopping-cart">
-            <h2>Cart Items</h2>
-            <ul>
-                {products.map((product)=>(
-                    <li key={product.id}>
-                        <span className="name">{product.name}</span>{" "}
+        <h2>Cart Items</h2>
+        <ul>
+            {products.map((product)=>(
+                <li key={product.id}>
+                    {editingProductId===product.id ? (
+                        <input
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                        />
+                        ) : (
+                            <span className="name">{product.name}</span>
+                        )}
+
                         <span className="type">{product.type}</span>{" "}
                         <span className="quantity">{product.quantity}</span>
-
-                    </li>
-                ))}
-            </ul>
-            <form onSubmit={(e)=>{
+                        
+                  <button onClick={()=>{
+                    if(editingProductId === product.id){
+                        editProduct(product.id, input);
+                        setEditingProductId(null);
+                    }else{
+                        setEditingProductId(product.id);
+                        setInput(product.name);
+                    }
+                  }}>
+                    {editingProductId === product.id ? "Save":"Edit"}
+                  </button>
+                </li>
+            ))}
+        </ul>
+        <form onSubmit={(e)=>{
                 e.preventDefault();
                 addProduct(productName, productType, productQuantity)
 
@@ -61,9 +93,9 @@ const ShoppingCart = () => {
                 onChange={(e)=>setProductQuantity(Number(e.target.value))}
                 /><br/>
                 <button type="submit">Add Products</button>
-            </form>
-        </div>
-     );
+        </form>
+      </div>
+    );
 }
 
 export default ShoppingCart;
