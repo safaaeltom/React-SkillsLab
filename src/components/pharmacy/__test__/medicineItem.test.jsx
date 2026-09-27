@@ -7,3 +7,9 @@ test('renders medicine name passed through prop', ()=>{
     const medicineElement = screen.getByText(/warfarin/i);
     expect(medicineElement).toBeInTheDocument();
 });
+
+test('renders the delete button', ()=>{
+    render(<MedicineItem medicine={{ id: 1, name: 'warfarin', quantity: 10 }}/>);
+    const deleteButton = screen.getByRole('button', {name: /delete/i});
+    expect(deleteButton).toBeInTheDocument();
+});
