@@ -19,3 +19,9 @@ test('renders the medicine name', async ()=>{
     const medicineElement = await screen.findByText(/medicine name/i);
     expect(medicineElement).toBeInTheDocument();
 })
+
+test('does not render a medicine that was not passed as a prop', ()=>{
+    render(<MedicineItem medicine={{ id: 1, name: 'warfarin', quantity: 10}}/>);
+    const medicineElement = screen.queryByText(/roacutane/i);
+    expect(medicineElement).not.toBeInTheDocument();
+})
