@@ -12,8 +12,11 @@ const MedicineItem = ({
 
     return ( 
         <li>
+            <label htmlFor="medicine-name">Medicine name</label>
+
             {isEditing ? 
             (<input 
+                id= "medicine-name"
                 value={input} 
                 type= "text" 
                 onChange={(e)=>setInput(e.target.value)} 

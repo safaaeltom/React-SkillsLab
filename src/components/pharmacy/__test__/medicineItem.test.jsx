@@ -13,3 +13,9 @@ test('renders the delete button', ()=>{
     const deleteButton = screen.getByRole('button', {name: /delete/i});
     expect(deleteButton).toBeInTheDocument();
 });
+
+test('renders the medicine name', async ()=>{
+    render(<MedicineItem medicine={{ id: 1, name: 'warfarin', quantity: 10}}/>);
+    const medicineElement = await screen.findByText(/medicine name/i);
+    expect(medicineElement).toBeInTheDocument();
+})
